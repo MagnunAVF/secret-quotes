@@ -1,0 +1,15 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+# JWT Secrets
+secrets.json
+
+# Local dynamodb
+.dynamodb
