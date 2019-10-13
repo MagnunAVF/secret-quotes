@@ -8,4 +8,5 @@ provider:
   runtime: nodejs10.x
 
 plugins:
-  - serverless-offline  
+  - serverless-webpack
+  - serverless-offline
