@@ -13,9 +13,11 @@ describe('getQuote', () => {
 
     it('Should return a random quote', () => {
         return wrapped.run({}).then((response) => {
+            const body = JSON.parse(response.body);
+
             expect(response).toBeDefined();
-            expect(response.body).toHaveProperty('quote');
-            expect(typeof response.body.quote).toBe('string');
+            expect(body).toHaveProperty('quote');
+            expect(typeof body.quote).toBe('string');
         });
     });
 
