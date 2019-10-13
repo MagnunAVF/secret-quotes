@@ -29,3 +29,13 @@ functions:
           path: quote
           method: get
           cors: true
+  secretQuote:
+    handler: src/routes/secretQuotes.getQuote
+    events:
+      - http:
+          method: get
+          path: secret-quote
+          cors: true
+          authorizer:
+            name: customAuthorizer
+            type: request
