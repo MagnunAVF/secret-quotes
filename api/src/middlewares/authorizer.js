@@ -6,8 +6,6 @@ const awsHelper = require('../utils/aws');
 const jwtHelper = require('../utils/jwt');
 
 module.exports.handler = (event, context, callback) => {
-    console.log(event)
-    console.log(context)
     const jwtToken = event.headers.Authorization;
     const secretKid = event.headers.kid;
     let secret = '';
@@ -32,6 +30,6 @@ module.exports.handler = (event, context, callback) => {
         callback(null, policyDocument);
     } catch (error) {
         console.log(error.message);
-        callback('Unauthorized'); // Return a 401 Unauthorized response
+        callback('Unauthorized');
     }
 };
