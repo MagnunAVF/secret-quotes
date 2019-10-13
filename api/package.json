@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serverless offline start",
+    "test": "jest --verbose=true",
+    "test:watch": "jest --watch --verbose=true",
+    "test:cov": "jest --coverage --verbose=true"
   },
   "keywords": [],
   "author": "",
