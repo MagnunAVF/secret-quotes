@@ -9,4 +9,5 @@ provider:
 
 plugins:
   - serverless-webpack
+  - serverless-jest-plugin
   - serverless-offline
