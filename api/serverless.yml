@@ -11,3 +11,12 @@ plugins:
   - serverless-webpack
   - serverless-jest-plugin
   - serverless-offline
+
+functions:
+  quote:
+    handler: src/routes/quotes.getQuote
+    events:
+      - http:
+          path: quote
+          method: get
+          cors: true
