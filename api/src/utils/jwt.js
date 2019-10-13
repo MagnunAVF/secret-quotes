@@ -23,6 +23,10 @@ module.exports.getSecret = (secretKey) => {
     return secretsHash[secretKey];
 }
 
+module.exports.getPossibleKids = () => {
+    return _.keys(getSecretsHash());
+}
+
 const getSecretsHash = () => {
     const secretsFile = fs.readFileSync('secrets.json');
 
