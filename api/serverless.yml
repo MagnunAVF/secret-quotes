@@ -13,6 +13,13 @@ plugins:
   - serverless-offline
 
 functions:
+  login:
+    handler: src/routes/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
   quote:
     handler: src/routes/quotes.getQuote
     events:
