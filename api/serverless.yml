@@ -13,6 +13,8 @@ plugins:
   - serverless-offline
 
 functions:
+  customAuthorizer:
+    handler: src/middlewares/authorizer.handler
   login:
     handler: src/routes/login.handler
     events:
