@@ -1,4 +1,4 @@
-export const USERS = [
+module.exports.USERS = [
     {
         name: 'user1',
         email: 'user1@mail.com',
