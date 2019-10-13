@@ -1,12 +1,14 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 const usersService = require('../services/users');
 const jwtHelper = require('../utils/jwt');
 const response = require('../utils/response');
 
 const JWT_EXPIRATION_TIME = '10m';
 const BODY_VALIDATION_ERROR_MESSAGE = 'User email and password must be present!';
+const USER_NOT_FOUND_MESSAGE_END = "Not Found!";
 
 module.exports.handler = async (event, context, callback) => {
     console.log('Login route');
@@ -40,8 +42,12 @@ module.exports.handler = async (event, context, callback) => {
         callback(null, response.build(200, body));
     } catch (error) {
         let statusCode = 401;
+
         if (error.message === BODY_VALIDATION_ERROR_MESSAGE) {
             statusCode = 400;
+        }
+        if (_.endsWith(error.message, USER_NOT_FOUND_MESSAGE_END)) {
+            statusCode = 404;
         }
 
         const body = { error: error.message };
