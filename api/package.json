@@ -4,15 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "serverless offline start",
+    "test": "jest --verbose=true --silent",
+    "test:watch": "jest --watch --verbose=true --silent",
+    "test:cov": "jest --coverage --verbose=true --silent"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^24.9.0",
+    "serverless-jest-plugin": "^0.2.1",
     "serverless-offline": "^5.12.0",
     "serverless-webpack": "^5.3.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.41.1",
     "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15"
   }
 }

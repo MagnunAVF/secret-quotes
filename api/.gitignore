@@ -13,3 +13,6 @@ secrets.json
 
 # Local dynamodb
 .dynamodb
+
+# test coverage results
+coverage
