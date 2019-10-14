@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_BASE_URL: 'TODO: SET PROD API BASE URL'
+  API_BASE_URL: 'http://localhost:3000'
 };
