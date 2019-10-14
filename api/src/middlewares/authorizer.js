@@ -5,19 +5,22 @@ const jwt = require('jsonwebtoken');
 const awsHelper = require('../utils/aws');
 const jwtHelper = require('../utils/jwt');
 
+const HEADER_VALIDATION_ERROR_MESSAGE = 'User jwt token and secret key identifier must be present in header!';
+
 module.exports.handler = (event, context, callback) => {
-    const jwtToken = event.headers.Authorization;
-    const secretKid = event.headers.kid;
+    const receivedHeader = event.headers;
+    const jwtToken = receivedHeader.Authorization;
+    const secretKid = receivedHeader.kid;
     let secret = '';
 
     try {
-        secret = jwtHelper.getSecret(secretKid);
-    } catch (error) {
-        console.log(error);
-        callback('Unauthorized');
-    }
+        if (!jwtToken || !secretKid) {
+            console.log(HEADER_VALIDATION_ERROR_MESSAGE);
+            throw new Error(HEADER_VALIDATION_ERROR_MESSAGE);
+        };
 
-    try {
+        secret = jwtHelper.getSecret(secretKid);
+
         const decodedToken = jwt.verify(jwtToken, secret);
         const user = decodedToken.user;
 

@@ -15,7 +15,7 @@ module.exports.getSecret = (secretKey) => {
     const possibleKeys = _.keys(secretsHash);
 
     if (!possibleKeys.includes(secretKey)) {
-        const message = `Key ${secretKey} not exists!`
+        const message = `Key ${secretKey} not exists!`;
         console.log(message);
         throw new Error(message);
     }
