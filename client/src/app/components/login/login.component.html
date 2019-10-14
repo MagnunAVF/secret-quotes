@@ -17,3 +17,10 @@
         </form>
     </div>
 </div>
+
+<div *ngIf="logged" class="card border-primary">
+    <div class="card-body">
+        <h3><strong id="secret">Secret Quote:</strong> {{secretQuote}}</h3>
+        <button type="button" (click)="getSecretQuote()" class="btn btn-success">Get Secret Quote</button>
+    </div>
+</div>

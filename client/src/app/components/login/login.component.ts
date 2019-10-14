@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../../services/login.service';
+import { QuotesService } from './../../services/quotes.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,12 @@ import { LoginService } from './../../services/login.service';
 export class LoginComponent implements OnInit {
   logged = false;
   loginForm: FormGroup;
+  secretQuote = '';
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private quotesService: QuotesService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -38,4 +43,20 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  async getSecretQuote() {
+    const headers = {
+      "Authorization": localStorage.getItem('token'),
+      "kid": localStorage.getItem('kid')
+    }
+
+    await this.quotesService.getQuote('/secret-quote', headers).toPromise().then(
+      (result) => {
+        this.secretQuote = result.quote;
+      },
+      (error) => {
+        this.secretQuote = 'Error getting quote';
+        console.log(`Error: ${error}`);
+      }
+    );
+  }
 }
