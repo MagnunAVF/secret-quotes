@@ -6,7 +6,7 @@ API general notes.
 |---|---|---|
 | GET /quote | Return a random quote | none |
 | GET /secret-quote | Return a random secret quote | A valid Authorization and kid request headers|
-| POST /login | Logina a user and return jwt token and secret key identifier| A request body with valid user email and password|
+| POST /login | Login a user and return jwt token and secret key identifier| A request body with valid user email and password|
 
 ## Getting Started
 
@@ -66,8 +66,22 @@ serverless offline start
 ```
 You can use --noTimeout flag to avoid timeouts.
 
+## Tests
+After install, you can run tests with:
+```
+npm run test
+```
+To run tests with coverage, run:
+```
+npm run test:cov
+```
+To run develop with TDD, run:
+```
+npm run test:watch
+```
+
 ## Styleguide
-Todo
+Based on airbnb.
 
 ## Deployment
 To deploy, you need to have ~/.aws/credentials file set up.
