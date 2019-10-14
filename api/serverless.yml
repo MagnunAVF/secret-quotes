@@ -9,4 +9,33 @@ provider:
 
 plugins:
   - serverless-webpack
+  - serverless-jest-plugin
   - serverless-offline
+
+functions:
+  customAuthorizer:
+    handler: src/middlewares/authorizer.handler
+  login:
+    handler: src/routes/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+  quote:
+    handler: src/routes/quotes.getQuote
+    events:
+      - http:
+          path: quote
+          method: get
+          cors: true
+  secretQuote:
+    handler: src/routes/secretQuotes.getQuote
+    events:
+      - http:
+          method: get
+          path: secret-quote
+          cors: true
+          authorizer:
+            name: customAuthorizer
+            type: request
