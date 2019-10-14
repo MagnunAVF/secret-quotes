@@ -31,3 +31,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Deploy
+* Create a s3 bucket for client app;
+* Compile app with build command;
+* Upload build result files to S3;
+* Link s3 bucket with cloudfront.
