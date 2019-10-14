@@ -22,9 +22,9 @@ export class QuoteComponent implements OnInit {
       (result) => {
         this.quote = result.quote;
       },
-      error => {
+      (error) => {
         this.quote = 'Error getting quote';
-        console.log('Error');
+        console.log(`Error: ${error}`);
       }
     );
   }
