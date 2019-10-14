@@ -10,4 +10,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  logged = false;
+  quote = 'No quote. Get one!';
 }
